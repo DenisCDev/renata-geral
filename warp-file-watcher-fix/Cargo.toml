@@ -1,0 +1,39 @@
+[package]
+name = "warp-file-watcher-fix"
+version = "0.1.0"
+edition = "2021"
+description = "Fix for Warp Project Explorer File Watcher - Issues #7900, #7954, #8295"
+license = "MIT"
+
+[dependencies]
+# File watching
+notify = "6.1"
+
+# Async runtime
+tokio = { version = "1.35", features = ["full", "sync", "rt-multi-thread", "macros"] }
+
+# LRU cache for bounded memory
+lru = "0.12"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Time handling
+chrono = "0.4"
+
+[dev-dependencies]
+tempfile = "3.10"
+tokio-test = "0.4"
+
+[lib]
+name = "warp_file_watcher"
+path = "src/lib.rs"
+
+[[bin]]
+name = "warp-file-watcher-demo"
+path = "src/main.rs"
